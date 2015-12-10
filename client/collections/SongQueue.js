@@ -17,8 +17,15 @@ var SongQueue = Songs.extend({
       });
 
       this.on('dequeue', function() {
+        //Will not work when dequeuing from song queue
+        //Try this.remove(this.model)
         this.shift();
       });
+
+      this.on('enqueue', function() {
+        this.add(this.model);
+        console.log(this)
+      })
   },
 
   playFirst: function() {
